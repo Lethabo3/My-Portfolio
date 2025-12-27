@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        .logo-text {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 400;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            filter: blur(20px);
+            opacity: 0;
+            animation: blurInOut 4s ease-in-out forwards;
+        }
+
+        @keyframes blurInOut {
+            0% {
+                filter: blur(20px);
+                opacity: 0;
+            }
+            25% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+            75% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h1 class="logo-text">Gem</h1>
+    </div>
+</body>
+<script>
+    setTimeout(() => {
+        window.location.href = 'demo1.html';
+    }, 2000);
+</script>
+</html>

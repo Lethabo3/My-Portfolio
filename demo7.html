@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 7</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-border: #e5e5e5;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .demo-container {
+            width: 100%;
+            max-width: 800px;
+        }
+        .query-box {
+            width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            background: var(--color-bg);
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .query-box.blur-out {
+            animation: blurOut 1s ease-in-out forwards !important;
+        }
+        .query-textarea {
+            width: 100%;
+            min-height: 60px;
+            border: none;
+            outline: none;
+            resize: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: transparent;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes blurOut {
+            0% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+            100% {
+                opacity: 0;
+                filter: blur(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="query-box" id="queryBox">
+            <textarea class="query-textarea" id="queryInput" readonly></textarea>
+        </div>
+    </div>
+    <script>
+        const textarea = document.getElementById('queryInput');
+        const queryBox = document.getElementById('queryBox');
+        const textToType = "Update the price of product SKU-12345 to $89.99";
+        let charIndex = 0;
+        
+        setTimeout(() => {
+            function typeCharacter() {
+                if (charIndex < textToType.length) {
+                    textarea.value += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeCharacter, 60);
+                } else {
+                    setTimeout(() => {
+                        queryBox.classList.add('blur-out');
+                        setTimeout(() => {
+                            window.location.href = 'demo8.html';
+                        }, 1000);
+                    }, 1500);
+                }
+            }
+            typeCharacter();
+        }, 1000);
+    </script>
+</body>
+</html>

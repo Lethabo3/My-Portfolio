@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votality - Demo 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('fonts/GeneralSans-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .loading-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .loading-header {
+            font-family: 'GeneralSans-Medium', 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkpoint-area {
+            min-height: 60px;
+        }
+
+        .checkpoint {
+            opacity: 0;
+            filter: blur(15px);
+        }
+
+        @keyframes blurIn {
+            0% { opacity: 0; filter: blur(15px); }
+            100% { opacity: 1; filter: blur(0); }
+        }
+
+        @keyframes blurOut {
+            0% { opacity: 1; filter: blur(0); }
+            100% { opacity: 0; filter: blur(15px); }
+        }
+
+        .checkpoint.blur-in {
+            animation: blurIn 0.6s ease-out forwards;
+        }
+
+        .checkpoint.blur-out {
+            animation: blurOut 0.6s ease-in forwards;
+        }
+
+        .checkpoint-title {
+            font-family: 'GeneralSans-Medium', 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+        }
+
+        .checkpoint-detail {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="checkpoint-area" id="checkpointArea"></div>
+    </div>
+
+    <script>
+        const steps = [
+            { title: "Searching financial databases", detail: "Retrieving market data from global sources" },
+            { title: "Analyzing Annual & Interim Reports", detail: "Processing 16 quarters of financial statements" },
+            { title: "Reviewing News Releases", detail: "Analyzing 342 recent company announcements" },
+            { title: "Processing SEC Filings", detail: "Examining 53K words of regulatory documents" },
+            { title: "Scanning Corporate Governance", detail: "Reviewing 18 organizational documents" },
+            { title: "Preparing comprehensive analysis", detail: "Synthesizing market data insights" }
+        ];
+
+        const checkpointArea = document.getElementById('checkpointArea');
+        let currentStep = 0;
+
+        function createCheckpoint(step) {
+            const div = document.createElement('div');
+            div.className = 'checkpoint';
+            div.innerHTML = `
+                <div class="checkpoint-title">${step.title}</div>
+                <div class="checkpoint-detail">${step.detail}</div>
+            `;
+            return div;
+        }
+
+        function showStep() {
+            if (currentStep >= steps.length) {
+                setTimeout(() => {
+                    window.location.href = 'emo5.html';
+                }, 500);
+                return;
+            }
+
+            checkpointArea.innerHTML = '';
+            const checkpoint = createCheckpoint(steps[currentStep]);
+            checkpointArea.appendChild(checkpoint);
+
+            setTimeout(() => checkpoint.classList.add('blur-in'), 50);
+
+            setTimeout(() => {
+                checkpoint.classList.remove('blur-in');
+                checkpoint.classList.add('blur-out');
+            }, 1800);
+
+            setTimeout(() => {
+                currentStep++;
+                showStep();
+            }, 2400);
+        }
+
+        setTimeout(showStep, 400);
+    </script>
+</body>
+</html>

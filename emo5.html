@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votality - Demo 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('fonts/GeneralSans-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .response-container {
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+            opacity: 0;
+            filter: blur(20px);
+            animation: blurIn 1s ease-out forwards;
+        }
+
+        @keyframes blurIn {
+            0% { opacity: 0; filter: blur(20px); }
+            100% { opacity: 1; filter: blur(0); }
+        }
+
+        @keyframes blurOut {
+            0% { opacity: 1; filter: blur(0); }
+            100% { opacity: 0; filter: blur(20px); }
+        }
+
+        .blur-out {
+            animation: blurOut 1s ease-in forwards !important;
+        }
+
+        .response-text {
+            font-family: 'GeneralSans-Medium', 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="response-container" id="responseContainer">
+        <p class="response-text">
+            NVIDIA (NASDAQ: NVDA) is currently trading at <span class="highlight">$190.53</span>, up <span class="highlight">+1,366.74%</span> over the past 5 years. The company reported record Q4 2025 revenue of <span class="highlight">$39.3 billion</span>, driven by strong data center demand. EPS came in at <span class="highlight">$0.89</span>, beating estimates by 12%. Recent SEC filings show continued AI infrastructure investments and a gross margin of <span class="highlight">74.8%</span>.
+        </p>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById('responseContainer').classList.add('blur-out');
+            setTimeout(() => {
+                window.location.href = 'emo6.html';
+            }, 1000);
+        }, 9000);
+    </script>
+</body>
+</html>

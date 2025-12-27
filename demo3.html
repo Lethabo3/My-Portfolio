@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .sql-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .sql-code {
+            font-family: var(--font-body);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .sql-line {
+            opacity: 0;
+            filter: blur(10px);
+        }
+
+        @keyframes blurInOut {
+            0% {
+                opacity: 0;
+                filter: blur(10px);
+            }
+            25% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+            75% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+            100% {
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sql-wrapper">
+        <div class="sql-code" id="sqlCode"></div>
+    </div>
+
+    <script>
+        const sqlCodeElement = document.getElementById('sqlCode');
+        const sqlLines = [
+            'SELECT customer_id, customer_name, email,',
+            '       SUM(purchase_amount) as total_spent',
+            'FROM customers c',
+            'JOIN purchases p ON c.id = p.customer_id',
+            "WHERE p.purchase_date >= CURRENT_DATE - INTERVAL '30 days'",
+            'GROUP BY customer_id, customer_name, email',
+            'HAVING SUM(purchase_amount) > 500',
+            'ORDER BY total_spent DESC;'
+        ];
+
+        // Pre-render all lines with blur
+        sqlLines.forEach((line, index) => {
+            const lineSpan = document.createElement('div');
+            lineSpan.className = 'sql-line';
+            lineSpan.textContent = line;
+            lineSpan.style.filter = 'blur(10px)';
+            lineSpan.style.opacity = '0';
+            sqlCodeElement.appendChild(lineSpan);
+        });
+
+        let lineIndex = 0;
+
+        function showNextLine() {
+            if (lineIndex < sqlLines.length) {
+                const lineElement = sqlCodeElement.children[lineIndex];
+                lineElement.style.animation = 'blurInOut 1.6s ease-in-out forwards';
+                
+                lineIndex++;
+                setTimeout(showNextLine, 200);
+            } else {
+                setTimeout(() => {
+                    window.location.href = 'demo4.html';
+                }, 1500);
+            }
+        }
+
+        setTimeout(showNextLine, 500);
+    </script>
+</body>
+</html>

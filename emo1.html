@@ -1,0 +1,82 @@
+<!-- demo1.html - Votality logo blur in/out -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votality - Demo 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('fonts/GeneralSans-Medium.woff2') format('woff2'),
+                 url('fonts/GeneralSans-Medium.woff') format('woff'),
+                 url('fonts/GeneralSans-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
+        .logo-text {
+    font-family: 'GeneralSans-Medium', 'DM Sans', -apple-system, sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 500;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    filter: blur(20px);
+    opacity: 0;
+    animation: blurInOut 4s ease-in-out forwards;
+}
+
+        @keyframes blurInOut {
+            0% {
+                filter: blur(20px);
+                opacity: 0;
+            }
+            30% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+            70% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+            100% {
+                filter: blur(20px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h1 class="logo-text">Votality</h1>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = 'emo2.html';
+        }, 4000);
+    </script>
+</body>
+</html>

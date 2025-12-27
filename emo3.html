@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votality - Demo 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('fonts/GeneralSans-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .query-container {
+            width: 100%;
+            max-width: 700px;
+            filter: blur(20px);
+            opacity: 0;
+            animation: blurIn 1s ease-out forwards;
+        }
+
+        @keyframes blurIn {
+            to { filter: blur(0); opacity: 1; }
+        }
+
+        @keyframes blurOut {
+    0% { filter: blur(0); opacity: 1; }
+    100% { filter: blur(20px); opacity: 0; }
+}
+
+.blur-out {
+    animation: blurOut 1s ease-in-out forwards !important;
+}
+
+        .textarea-container {
+            position: relative;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            background: #fff;
+            padding: 1rem;
+        }
+
+        .textarea-input {
+    width: 100%;
+    min-height: 80px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'GeneralSans-Medium', 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1a1a1a;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-bottom: 3rem;
+}
+
+        .attachment-btn {
+            position: absolute;
+            left: 12px;
+            bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+            font-size: 0.875rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .attachment-btn svg {
+            transform: rotate(-45deg);
+        }
+
+        .type-selector {
+            position: absolute;
+            right: 50px;
+            bottom: 14px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .submit-btn {
+            position: absolute;
+            right: 10px;
+            bottom: 14px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-btn svg {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="query-container" id="queryContainer">
+        <div class="textarea-container">
+            <textarea class="textarea-input" id="queryInput" readonly></textarea>
+            <div class="attachment-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
+                </svg>
+                <span>Attach</span>
+            </div>
+            <div class="type-selector">
+                <span>Overview</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </div>
+            <div class="submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('queryInput');
+        const container = document.getElementById('queryContainer');
+        const textToType = "What's happening with NVDA earnings?";
+        let charIndex = 0;
+
+setTimeout(() => {
+    function typeCharacter() {
+        if (charIndex < textToType.length) {
+            textarea.value += textToType.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeCharacter, 70);
+        } else {
+            setTimeout(() => {
+                container.classList.add('blur-out');
+                setTimeout(() => {
+                    window.location.href = 'emo4.html';
+                }, 1000);
+            }, 1500);
+        }
+    }
+    typeCharacter();
+}, 500);
+    </script>
+</body>
+</html>

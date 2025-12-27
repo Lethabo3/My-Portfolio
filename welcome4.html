@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spark">
+    <link rel="apple-touch-icon" href="blueocean.jpeg">
+    <title>Spark - Countdown</title>
+    <style>
+        @font-face {
+            font-family: 'CabinetGrotesk-Medium';
+            src: url('./fonts/CabinetGrotesk-Medium.woff2') format('woff2'),
+                 url('./fonts/CabinetGrotesk-Medium.woff') format('woff'),
+                 url('./fonts/CabinetGrotesk-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-display: swap;
+            font-style: normal;
+        }
+
+        :root {
+            --color-background: #000000;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: rgba(255, 255, 255, 0.65);
+            --font-heading: 'CabinetGrotesk-Medium', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font-heading);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .countdown-screen {
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(20px, 5vw, 32px);
+            text-align: center;
+            opacity: 0;
+            filter: blur(12px);
+            animation: fadeBlurIn 0.6s ease-out 0.2s forwards;
+        }
+
+        .countdown-label {
+            font-size: clamp(16px, 4vw, 20px);
+            color: var(--color-text-secondary);
+            letter-spacing: -0.01em;
+        }
+
+        .timer-display {
+            font-size: clamp(64px, 16vw, 96px);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            display: flex;
+            gap: clamp(4px, 1vw, 8px);
+        }
+
+        .timer-segment {
+            display: inline-flex;
+            overflow: hidden;
+            height: clamp(64px, 16vw, 96px);
+            position: relative;
+        }
+
+        .timer-digit {
+            display: inline-flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+            position: relative;
+        }
+
+        .digit-wrapper {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1),
+                        filter 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+            filter: blur(0);
+        }
+
+        .digit-wrapper.transitioning {
+            filter: blur(8px);
+        }
+
+        .digit-item {
+            height: clamp(64px, 16vw, 96px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: clamp(38px, 9.6vw, 58px);
+        }
+
+        .timer-colon {
+            display: flex;
+            align-items: center;
+            opacity: 0.7;
+        }
+
+        .countdown-container.fade-out-all {
+            animation: fadeBlurOut 0.8s ease-in forwards;
+        }
+
+        @keyframes fadeBlurIn {
+            0% {
+                opacity: 0;
+                filter: blur(12px);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        @keyframes fadeBlurOut {
+            0% {
+                opacity: 1;
+                filter: blur(0);
+            }
+            100% {
+                opacity: 0;
+                filter: blur(12px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="countdown-screen">
+        <div class="countdown-container" id="countdownContainer">
+            <p class="countdown-label">Time until reveal</p>
+            <div class="timer-display">
+                <div class="timer-segment">
+                    <div class="timer-digit" id="hours1"></div>
+                    <div class="timer-digit" id="hours2"></div>
+                </div>
+                <span class="timer-colon">:</span>
+                <div class="timer-segment">
+                    <div class="timer-digit" id="minutes1"></div>
+                    <div class="timer-digit" id="minutes2"></div>
+                </div>
+                <span class="timer-colon">:</span>
+                <div class="timer-segment">
+                    <div class="timer-digit" id="seconds1"></div>
+                    <div class="timer-digit" id="seconds2"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+const countdownContainer = document.getElementById('countdownContainer');
+
+function createDigitElements(containerId, maxValue) {
+    const container = document.getElementById(containerId);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'digit-wrapper';
+    
+    for (let i = maxValue; i >= 0; i--) {
+        const digitItem = document.createElement('div');
+        digitItem.className = 'digit-item';
+        digitItem.textContent = i;
+        wrapper.appendChild(digitItem);
+    }
+    
+    container.appendChild(wrapper);
+    return wrapper;
+}
+
+const hours1Wrapper = createDigitElements('hours1', 0);
+const hours2Wrapper = createDigitElements('hours2', 0);
+const minutes1Wrapper = createDigitElements('minutes1', 0);
+const minutes2Wrapper = createDigitElements('minutes2', 0);
+const seconds1Wrapper = createDigitElements('seconds1', 5);
+const seconds2Wrapper = createDigitElements('seconds2', 9);
+
+function getDigitHeight() {
+    const digitItem = document.querySelector('.digit-item');
+    return digitItem ? digitItem.offsetHeight : 96;
+}
+
+function updateTimer(seconds) {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    
+    const h1 = Math.floor(hrs / 10);
+    const h2 = hrs % 10;
+    const m1 = Math.floor(mins / 10);
+    const m2 = mins % 10;
+    const s1 = Math.floor(secs / 10);
+    const s2 = secs % 10;
+    
+    const digitHeight = getDigitHeight();
+    
+    seconds2Wrapper.classList.add('transitioning');
+    
+    hours1Wrapper.style.transform = `translateY(-${h1 * digitHeight}px)`;
+    hours2Wrapper.style.transform = `translateY(-${h2 * digitHeight}px)`;
+    minutes1Wrapper.style.transform = `translateY(-${m1 * digitHeight}px)`;
+    minutes2Wrapper.style.transform = `translateY(-${m2 * digitHeight}px)`;
+    seconds1Wrapper.style.transform = `translateY(-${(5 - s1) * digitHeight}px)`;
+    seconds2Wrapper.style.transform = `translateY(-${(9 - s2) * digitHeight}px)`;
+    
+    setTimeout(() => {
+        seconds2Wrapper.classList.remove('transitioning');
+    }, 250);
+}
+
+let currentTime = 3;
+
+updateTimer(currentTime);
+
+const countdownInterval = setInterval(() => {
+    currentTime--;
+    updateTimer(currentTime);
+    
+    if (currentTime <= 0) {
+        clearInterval(countdownInterval);
+        
+        setTimeout(() => {
+            countdownContainer.classList.add('fade-out-all');
+        }, 1000);
+        
+        setTimeout(() => {
+            window.location.href = 'welcome6.html';
+        }, 1800);
+    }
+}, 1000);
+    </script>
+</body>
+</html>

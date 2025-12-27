@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-muted: #6b6b6b;
+            --color-border: #e5e5e5;
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .demo-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            filter: blur(20px);
+            opacity: 0;
+            animation: blurIn 1.5s ease-in-out forwards;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-text-muted);
+        }
+
+        .query-box {
+            width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            background: var(--color-bg);
+            filter: blur(20px);
+            opacity: 0;
+            animation: blurIn 1.5s ease-in-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        .query-textarea {
+            width: 100%;
+            min-height: 60px;
+            border: none;
+            outline: none;
+            resize: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: transparent;
+        }
+
+        .query-textarea::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        @keyframes blurIn {
+            0% {
+                filter: blur(20px);
+                opacity: 0;
+            }
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blurOut {
+            0% {
+                filter: blur(0px);
+                opacity: 1;
+            }
+            100% {
+                filter: blur(20px);
+                opacity: 0;
+            }
+        }
+
+        .blur-out {
+            animation: blurOut 1s ease-in-out forwards !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="hero-title">Talk to your data, <em>naturally</em></h1>
+        
+        <div class="query-box">
+            <textarea class="query-textarea" id="queryInput" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('queryInput');
+        const heroTitle = document.querySelector('.hero-title');
+        const queryBox = document.querySelector('.query-box');
+        const textToType = "Show me all customers who made purchases over $500 in the last 30 days";
+        let charIndex = 0;
+
+        setTimeout(() => {
+            function typeCharacter() {
+                if (charIndex < textToType.length) {
+                    textarea.value += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeCharacter, 60);
+                } else {
+                    setTimeout(() => {
+                        heroTitle.classList.add('blur-out');
+                        queryBox.classList.add('blur-out');
+                        setTimeout(() => {
+                            window.location.href = 'demo3.html';
+                        }, 1000);
+                    }, 1500);
+                }
+            }
+            typeCharacter();
+        }, 3000);
+    </script>
+</body>
+</html>

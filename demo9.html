@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 9</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --font-display: 'Instrument Serif', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .response-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .response-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+            opacity: 0;
+            filter: blur(20px);
+            animation: blurIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes blurIn {
+            0% {
+                opacity: 0;
+                filter: blur(20px);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="response-wrapper">
+        <div class="response-text" id="responseText">
+            Successfully updated the price for product SKU-12345 to $89.99.
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = 'demo10.html';
+        }, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem - Demo 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --font-display: 'Instrument Serif', Georgia, serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-display);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .response-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+        .response-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+            opacity: 0;
+            filter: blur(20px);
+            animation: blurIn 1.5s ease-in-out forwards;
+        }
+        .blur-out {
+            animation: blurOut 1s ease-in-out forwards !important;
+        }
+        @keyframes blurIn {
+            0% {
+                opacity: 0;
+                filter: blur(20px);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+        @keyframes blurOut {
+            0% {
+                opacity: 1;
+                filter: blur(0px);
+            }
+            100% {
+                opacity: 0;
+                filter: blur(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="response-wrapper">
+        <div class="response-text" id="responseText">
+            I found 12 customers who made purchases over $500 in the last 30 days. The top spender is Sarah Chen with $2,847 in total purchases, followed by Michael Rodriguez at $1,923. These high-value customers represent significant revenue opportunities for targeted engagement and retention strategies.
+        </div>
+    </div>
+    <script>
+        const responseText = document.getElementById('responseText');
+        
+        setTimeout(() => {
+            responseText.classList.add('blur-out');
+            setTimeout(() => {
+                window.location.href = 'demo6.html';
+            }, 1000);
+        }, 7000);
+    </script>
+</body>
+</html>

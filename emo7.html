@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votality</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'GeneralSans-Medium';
+            src: url('fonts/GeneralSans-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-family: 'GeneralSans-Medium', 'DM Sans', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            filter: blur(20px);
+            animation: blurIn 1.5s ease-out forwards;
+        }
+
+        @keyframes blurIn {
+            0% { opacity: 0; filter: blur(20px); }
+            100% { opacity: 1; filter: blur(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="logo">Votality</h1>
+</body>
+<script>
+    setTimeout(() => {
+        window.location.href = 'emo2.html';
+    }, 2000);
+</script>
+</html>
