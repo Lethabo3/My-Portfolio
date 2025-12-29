@@ -19,16 +19,9 @@
             --font-sans: 'Karla', -apple-system, sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            font-size: 17px;
-            scroll-behavior: smooth;
-        }
+        html { font-size: 17px; scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
@@ -38,18 +31,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        ::selection {
-            background: var(--color-text);
-            color: var(--color-bg);
-        }
+        ::selection { background: var(--color-text); color: var(--color-bg); }
 
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
 
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -79,9 +64,7 @@
             font-style: italic;
         }
 
-        @keyframes slideUp {
-            to { transform: translateY(0); }
-        }
+        @keyframes slideUp { to { transform: translateY(0); } }
 
         .hero-meta {
             display: flex;
@@ -92,20 +75,11 @@
             animation: fadeIn 0.8s ease 0.5s forwards;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
 
-        .hero-meta-item span {
-            display: block;
-            color: var(--color-text);
-            font-weight: 400;
-        }
+        .hero-meta-item span { display: block; color: var(--color-text); font-weight: 400; }
 
-        /* Sections */
-        section {
-            padding: 120px 0;
-        }
+        section { padding: 120px 0; }
 
         .section-title {
             font-family: var(--font-serif);
@@ -116,22 +90,10 @@
             line-height: 1.1;
         }
 
-        .section-title span {
-            display: block;
-            font-style: italic;
-        }
+        .section-title span { display: block; font-style: italic; }
+        .section-title span.inline { display: inline; font-style: normal; }
 
-        .section-title span.inline {
-            display: inline;
-            font-style: normal;
-        }
-
-        /* Projects */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 56px;
-        }
+        .projects-list { display: flex; flex-direction: column; gap: 56px; }
 
         .project {
             display: grid;
@@ -148,9 +110,7 @@
             letter-spacing: -0.01em;
         }
 
-        .project-content {
-            width: 100%;
-        }
+        .project-content { width: 100%; }
 
         .project-description {
             font-size: 0.9rem;
@@ -177,11 +137,7 @@
             object-fit: cover;
         }
 
-        .project-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 16px;
-        }
+        .project-links { display: flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
 
         .project-link {
             font-size: 0.8rem;
@@ -190,14 +146,78 @@
             transition: color 0.3s ease;
         }
 
-        .project-link:hover {
+        .project-link:hover { color: var(--color-text-muted); }
+
+        .research-intro { max-width: 540px; margin-bottom: 56px; }
+
+        .research-intro p {
+            font-size: 0.95rem;
+            line-height: 1.9;
             color: var(--color-text-muted);
         }
 
-        /* About */
-        .about-content {
-            max-width: 520px;
+        .research-grid { display: flex; flex-direction: column; gap: 48px; }
+
+        .research-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: baseline;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--color-border);
         }
+
+        .research-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .research-year { font-size: 0.85rem; color: var(--color-text-subtle); }
+
+        .research-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .research-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .research-title a:hover { color: var(--color-text-muted); }
+
+        .research-field {
+            font-size: 0.8rem;
+            color: var(--color-text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .research-description {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.9;
+            max-width: 480px;
+        }
+
+        .research-links { display: flex; gap: 16px; margin-top: 16px; }
+
+        .research-link {
+            font-size: 0.8rem;
+            color: var(--color-text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .research-link:hover { color: var(--color-text-muted); }
+        .research-link svg { width: 14px; height: 14px; }
+
+        .about-content { max-width: 520px; }
 
         .about-text {
             font-size: 0.95rem;
@@ -205,18 +225,9 @@
             color: var(--color-text-muted);
         }
 
-        .about-text p {
-            margin-bottom: 24px;
-        }
-
-        .about-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-text em {
-            color: var(--color-text);
-            font-style: normal;
-        }
+        .about-text p { margin-bottom: 24px; }
+        .about-text p:last-child { margin-bottom: 0; }
+        .about-text em { color: var(--color-text); font-style: normal; }
 
         .about-meta {
             display: flex;
@@ -226,17 +237,9 @@
             color: var(--color-text-muted);
         }
 
-        .about-meta-item span {
-            display: block;
-            color: var(--color-text);
-            font-weight: 400;
-        }
+        .about-meta-item span { display: block; color: var(--color-text); font-weight: 400; }
 
-        /* Connect */
-        .connect-list {
-            display: flex;
-            gap: 40px;
-        }
+        .connect-list { display: flex; gap: 40px; }
 
         .connect-link {
             font-size: 0.9rem;
@@ -245,11 +248,8 @@
             transition: color 0.3s ease;
         }
 
-        .connect-link:hover {
-            color: var(--color-text-muted);
-        }
+        .connect-link:hover { color: var(--color-text-muted); }
 
-        /* Footer */
         footer {
             padding: 48px 0 80px;
             display: flex;
@@ -259,67 +259,26 @@
             color: var(--color-text-subtle);
         }
 
-        .footer-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .footer-status { display: flex; align-items: center; gap: 8px; }
+        .status-dot { width: 5px; height: 5px; background: var(--color-text); border-radius: 50%; }
 
-        .status-dot {
-            width: 5px;
-            height: 5px;
-            background: var(--color-text);
-            border-radius: 50%;
-        }
-
-        /* Scroll reveal */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
             transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 24px;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .project {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .project-preview {
-                width: 100%;
-                margin-left: 0;
-            }
-
-            .about-meta {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .connect-list {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
+            .container { padding: 0 24px; }
+            .hero-meta { flex-direction: column; gap: 20px; }
+            .project { grid-template-columns: 1fr; gap: 12px; }
+            .project-preview { width: 100%; margin-left: 0; }
+            .research-item { grid-template-columns: 1fr; gap: 8px; }
+            .about-meta { flex-direction: column; gap: 20px; }
+            .connect-list { flex-direction: column; gap: 16px; }
+            footer { flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -347,9 +306,7 @@
         </section>
 
         <section id="projects">
-            <h2 class="section-title reveal">
-                <span>Projects</span>
-            </h2>
+            <h2 class="section-title reveal"><span>Projects</span></h2>
 
             <div class="projects-list">
                 <article class="project reveal">
@@ -397,18 +354,54 @@
         </section>
 
         <section id="research">
-            <h2 class="section-title reveal">
-                <span>Research</span>
-            </h2>
+            <h2 class="section-title reveal"><span>Research</span></h2>
 
-            <div class="projects-list">
-                <article class="project reveal">
-                    <h3 class="project-title">Neurosic</h3>
-                    <div class="project-content">
-                        <p class="project-description">Researching neural synchronization and wave science to improve cognitive processing using artificial intelligence in brain computer interfaces that'll be able to detect neural oscillation within the neurons in the brain.</p>
-                        <div class="project-links">
-                            <a href="https://medium.com/@instinctslump/tensor-fields-and-their-interaction-with-quantum-mechanics-and-wave-particle-duality-6735752b443c" class="project-link" target="_blank" rel="noopener">Tensor Fields</a>
-                            <a href="https://medium.com/@instinctslump/progress-in-neural-synchronisation-using-artificial-intelligence-68f395cf2719" class="project-link" target="_blank" rel="noopener">Neural Synchronisation</a>
+            <div class="research-intro reveal">
+                <p>Independent research exploring the intersections of physics, mathematics, cognition, and cosmology. Published under Neurosic, my research initiative investigating fundamental questions across disciplines.</p>
+            </div>
+
+            <div class="research-grid">
+                <article class="research-item reveal">
+                    <span class="research-year">2025</span>
+                    <div>
+                        <p class="research-field">Astrophysics · General Relativity</p>
+                        <h3 class="research-title"><a href="rga-paper.html">Remnant-Guided Accretion: A Theoretical Framework for Spiral Arm Formation in Galaxies</a></h3>
+                        <p class="research-description">Proposes that spiral arms form through the accumulation of stellar remnants—star dust, gas, and smaller bodies—guided into spiral geometry by frame-dragging effects from rotating supermassive black holes.</p>
+                        <div class="research-links">
+                            <a href="rga-paper.html" class="research-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="research-item reveal">
+                    <span class="research-year">2024</span>
+                    <div>
+                        <p class="research-field">Theoretical Physics · Quantum Mechanics</p>
+                        <h3 class="research-title"><a href="tensor-fields-paper.html">Tensor Fields and Their Interaction with Quantum Mechanics and Wave-Particle Duality</a></h3>
+                        <p class="research-description">Explores the theoretical connections between tensor field manipulation, gravitational waves, and Pilot Wave Theory, proposing frameworks for understanding wave-particle duality through the lens of field dynamics and spacetime geometry.</p>
+                        <div class="research-links">
+                            <a href="tensor-fields-paper.html" class="research-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                Read Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="research-item reveal">
+                    <span class="research-year">2024</span>
+                    <div>
+                        <p class="research-field">Neuroscience · Artificial Intelligence</p>
+                        <h3 class="research-title"><a href="neural-sync-paper.html">Progress in Neural Synchronisation Using Artificial Intelligence to Achieve High Level Cognitive Processing</a></h3>
+                        <p class="research-description">Examines the role of AI in advancing brain-computer interfaces, focusing on how neural synchronisation can be improved through artificial intelligence to enable enhanced cognitive processing for disabled and paralysed patients.</p>
+                        <div class="research-links">
+                            <a href="neural-sync-paper.html" class="research-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                Read Paper
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -416,9 +409,7 @@
         </section>
 
         <section id="about">
-            <h2 class="section-title reveal">
-                <span class="inline">About Me</span>
-            </h2>
+            <h2 class="section-title reveal"><span class="inline">About Me</span></h2>
 
             <div class="about-content reveal">
                 <div class="about-text">
@@ -436,7 +427,7 @@
                         Built
                     </div>
                     <div class="about-meta-item">
-                        <span>2 papers</span>
+                        <span>3 papers</span>
                         Published
                     </div>
                 </div>
@@ -444,13 +435,11 @@
         </section>
 
         <section id="connect">
-            <h2 class="section-title reveal">
-                <span>Connect</span>
-            </h2>
+            <h2 class="section-title reveal"><span>Connect</span></h2>
 
             <div class="connect-list reveal">
-                <a href="https://github.com" class="connect-link" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://linkedin.com" class="connect-link" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/Lethabo3" class="connect-link" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/lethabo-sekoto-0549081b2/" class="connect-link" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="mailto:sekotonjabulo@gmail.com" class="connect-link">Email</a>
             </div>
         </section>
@@ -466,7 +455,6 @@
 
     <script>
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealOnScroll = () => {
             revealElements.forEach(el => {
                 const rect = el.getBoundingClientRect();
@@ -475,7 +463,6 @@
                 }
             });
         };
-
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
     </script>
