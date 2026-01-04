@@ -217,6 +217,24 @@
         .research-link:hover { color: var(--color-text-muted); }
         .research-link svg { width: 14px; height: 14px; }
 
+        .poetry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px 40px;
+        }
+
+        .poetry-link {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            letter-spacing: -0.01em;
+        }
+
+        .poetry-link:hover { color: var(--color-text-muted); }
+
         .about-content { max-width: 520px; }
 
         .about-text {
@@ -276,9 +294,14 @@
             .project { grid-template-columns: 1fr; gap: 12px; }
             .project-preview { width: 100%; margin-left: 0; }
             .research-item { grid-template-columns: 1fr; gap: 8px; }
+            .poetry-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 32px; }
             .about-meta { flex-direction: column; gap: 20px; }
             .connect-list { flex-direction: column; gap: 16px; }
             footer { flex-direction: column; gap: 16px; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .poetry-grid { grid-template-columns: 1fr; gap: 16px; }
         }
     </style>
 </head>
@@ -430,6 +453,22 @@
                         </div>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <section id="poetry">
+            <h2 class="section-title reveal"><span>Poetry</span></h2>
+
+            <div class="poetry-grid reveal">
+                <a href="truth.html" class="poetry-link">Truth</a>
+                <a href="will.html" class="poetry-link">Will</a>
+                <a href="euphoria.html" class="poetry-link">Euphoria</a>
+                <a href="knowledge-my-game.html" class="poetry-link">Knowledge, My Game</a>
+                <a href="the-greatest-act.html" class="poetry-link">The Greatest Act</a>
+                <a href="when-the-stars-shine.html" class="poetry-link">When the Stars Shine</a>
+                <a href="you-my-star.html" class="poetry-link">You, My Star</a>
+                <a href="the-moon-was-pretty.html" class="poetry-link">The Moon Was Pretty</a>
+                <a href="a-dream-we-had.html" class="poetry-link">A Dream We Had</a>
             </div>
         </section>
 
