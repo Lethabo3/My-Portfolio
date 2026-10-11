@@ -35,6 +35,30 @@
 
         .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
 
+        .certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.certificate-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.certificate-card img {
+    width: 100%;
+    display: block;
+}
+
+.certificate-caption {
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+}
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -127,6 +151,23 @@
             overflow: hidden;
             border: 1px solid var(--color-border);
         }
+
+        .project-stacked {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.project-stacked .project-preview {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+        .project-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
         .project-preview iframe,
         .project-preview video {
@@ -376,6 +417,57 @@
             </div>
         </section>
 
+        <section id="certificates">
+            <h2 class="section-title reveal"><span>Certificates</span></h2>
+        
+            <div class="projects-list">
+                <article class="project project-stacked reveal">
+                    <h3 class="project-title">Generative AI for Software Developers</h3>
+                    <div class="project-content">
+                        <div class="project-preview">
+                            <img src="generative-ai-for-software-developers.jpg" alt="Generative AI for Software Developers certificate">
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="project project-stacked reveal">
+                    <h3 class="project-title">Google Cybersecurity</h3>
+                    <div class="project-content">
+                        <div class="project-preview">
+                            <img src="google-cybersecurity.jpg" alt="Google Cybersecurity certificate">
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="project project-stacked reveal">
+                    <h3 class="project-title">Google Project Management</h3>
+                    <div class="project-content">
+                        <div class="project-preview">
+                            <img src="google-project-management.jpg" alt="Google Project Management certificate">
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="project project-stacked reveal">
+                    <h3 class="project-title">Software Engineering</h3>
+                    <div class="project-content">
+                        <div class="project-preview">
+                            <img src="software-engineering-certificate.jpg" alt="Software Engineering certificate">
+                        </div>
+                    </div>
+                </article>
+        
+                <article class="project project-stacked reveal">
+                    <h3 class="project-title">IBM AI Developer</h3>
+                    <div class="project-content">
+                        <div class="project-preview">
+                            <img src="ibm-ai-developer.jpg" alt="IBM AI Developer certificate">
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
         <section id="research">
             <h2 class="section-title reveal"><span>Research</span></h2>
 
