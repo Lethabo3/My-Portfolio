@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will — Lethabo Sekoto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #111111;
+            --color-text-muted: #666666;
+            --color-text-subtle: #999999;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Karla', -apple-system, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 17px; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: var(--color-text); color: var(--color-bg); }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 80px 32px 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .back-link {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            margin-bottom: 64px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover { color: var(--color-text); }
+
+        .poem-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .poem-author {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 48px;
+        }
+
+        .poem-text {
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: var(--color-text);
+            max-width: 520px;
+        }
+
+        .poem-text p {
+            margin-bottom: 32px;
+        }
+
+        .poem-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 48px 24px 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">        
+        <h1 class="poem-title">Will</h1>
+        
+        <div class="poem-text">
+            <p>you do have a choice,a choice not to glance too long, too long at the moment, the stranger. the experience is fleeting, but you can look away from it. i hate to look away, but what’s the point, the moment will soon be gone, the stranger will be no more, and so now i look away, from all of it</p>
+            <p>i’m free</p>
+        </div>
+    </div>
+</body>
+</html>
